@@ -58,7 +58,7 @@ public class stationaryControll : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		//Debug.Log("Trigger Enter");
+		Debug.Log("Trigger Enter");
 		addTrackedObjs(other);
 	}
 
@@ -68,7 +68,7 @@ public class stationaryControll : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		//Debug.Log("Trigger Exit");
+	    Debug.Log("Trigger Exit");
 		removeTrackedObjs(other);
 	}
 
