@@ -1,23 +1,21 @@
 fileFormatVersion: 2
-guid: db6e384d9e0748844a2fefce417b7e20
+guid: 68257bcdcaf54164bb80c622cad03556
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: turretDouble_exclusive
-    100002: //RootNode
-    100004: turretWeapon_left
-    100006: turretWeapon_right
-    400000: turretDouble_exclusive
-    400002: //RootNode
-    400004: turretWeapon_left
-    400006: turretWeapon_right
+    100000: //RootNode
+    100002: turretWeapon_left
+    100004: turretWeapon_right
+    400000: //RootNode
+    400002: turretWeapon_left
+    400004: turretWeapon_right
     2100000: _defaultMat
     2100002: glass
     2100004: metal
-    2300000: turretDouble_exclusive
+    2300000: //RootNode
     2300002: turretWeapon_left
     2300004: turretWeapon_right
-    3300000: turretDouble_exclusive
+    3300000: //RootNode
     3300002: turretWeapon_left
     3300004: turretWeapon_right
     4300000: turretDouble_exclusive
