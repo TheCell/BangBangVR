@@ -41,8 +41,8 @@ public class stationaryControll : MonoBehaviour
 
 			//drawDebugSpheresAtControllers();
 			Vector3 middleOfControllers = middlePointBetweenControllers();
-            Vector3 middleOfControlAndFixedHinge = middleOfControllers + stationaryFixedHinge.transform.position;
-            middleOfControlAndFixedHinge = new Vector3(middleOfControlAndFixedHinge.x / 2, middleOfControlAndFixedHinge.y / 2, middleOfControlAndFixedHinge.z / 2);
+            //Vector3 middleOfControlAndFixedHinge = middleOfControllers + stationaryFixedHinge.transform.position;
+            //middleOfControlAndFixedHinge = new Vector3(middleOfControlAndFixedHinge.x / 2, middleOfControlAndFixedHinge.y / 2, middleOfControlAndFixedHinge.z / 2);
 
             //drawDebugsphereAtPosition(middleOfControllers);
 			//drawDebugRectFromPos(middleOfControllers, stationaryFixedHinge);
@@ -58,7 +58,7 @@ public class stationaryControll : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Trigger Enter");
+		//Debug.Log("Trigger Enter");
 		addTrackedObjs(other);
 	}
 
@@ -68,7 +68,7 @@ public class stationaryControll : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-	    Debug.Log("Trigger Exit");
+	    //Debug.Log("Trigger Exit");
 		removeTrackedObjs(other);
 	}
 
@@ -207,17 +207,17 @@ public class stationaryControll : MonoBehaviour
 		debugRect.transform.LookAt(ObjectForDirection);
 	}
 
-	private void drawBalistaFromPos(Vector3 middleOfControllers, Transform ObjectForDirectionAndHeadposition, GameObject balista)
+	private void drawBalistaFromPos(Vector3 middleOfControllers, Transform objectForDirectionAndHeadposition, GameObject balista)
 	{
-		// update front pivot point, put balista head on fixedPoint
-		Vector3 balistaPivotPointOffset = balistaHingePoint.transform.localPosition - balista.transform.localPosition;
-        balista.transform.position = ObjectForDirectionAndHeadposition.transform.position;
+        // update front pivot point, put balista head on fixedPoint
+        // THIS IS IMPORTANT: the objectForDirectionAndHeadposition MUST NOT BE an empty object | this fix took me some solid hours
+        balista.transform.position = objectForDirectionAndHeadposition.position;
 
         // "set" balista rear into hands direction
         balista.transform.LookAt(middleOfControllers);
 
         // rotate 180 and for the right direction
-        balista.transform.Rotate(new Vector3(180.0f, 90f, 0.0f));
+        balista.transform.Rotate(new Vector3(180.0f, 0.0f, 0.0f));
 	}
 
 	private void checkTriggers(List<SteamVR_TrackedObject> vrControllers)
