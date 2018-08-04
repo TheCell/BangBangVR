@@ -82,8 +82,8 @@ public class shootFlakCannon : MonoBehaviour
             currentBullet.SetActive(false);
             currentBullet.transform.position = shootingBarrel.transform.position;
             currentBullet.transform.rotation = shootingBarrel.transform.rotation;
-            resetBulletTrail();
             currentBullet.SetActive(true);
+            resetBulletTrail(currentBullet);
             Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -113,12 +113,13 @@ public class shootFlakCannon : MonoBehaviour
         return barrel;
     }
 
-    private void resetBulletTrail()
+    private void resetBulletTrail(GameObject objectWithTrail)
     {
-        TrailRenderer tr = GetComponent<TrailRenderer>();
+        TrailRenderer tr = objectWithTrail.GetComponent<TrailRenderer>();
         if (tr != null)
         {
-            tr.Clear();
+            print("this deletes gameobjects at the moment. TODO check after new Version");
+            //tr.Clear();
         }
     }
 
