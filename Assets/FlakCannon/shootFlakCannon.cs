@@ -146,7 +146,7 @@ public class shootFlakCannon : MonoBehaviour
 
     private void shootIfReadyAndCommandGiven()
     {
-        if (shotIsReady())
+        if (shotCommandGiven() && shotIsReady())
         {
             shootBullet();
         }
