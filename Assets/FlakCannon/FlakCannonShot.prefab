@@ -38,8 +38,8 @@ GameObject:
   - component: {fileID: 4312637039266578}
   - component: {fileID: 54724225570770578}
   - component: {fileID: 96523891860071864}
-  - component: {fileID: 65044553988575728}
   - component: {fileID: 114274334001648344}
+  - component: {fileID: 65378664272294754}
   m_Layer: 0
   m_Name: FlakCannonShot
   m_TagString: Untagged
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306503631690766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 122.09843, y: 100.883194, z: -47.39731}
+  m_LocalPosition: {x: 123.649765, y: 103.21518, z: -45.74737}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 4659351326165898}
@@ -130,8 +130,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &65044553988575728
+  m_CollisionDetection: 2
+--- !u!65 &65378664272294754
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,8 +141,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0044742795, y: 0.0040233615, z: 0.008358764}
-  m_Center: {x: 0.00051134976, y: 0.00015087127, z: 0.0036045075}
+  m_Size: {x: 0.008857727, y: 0.0063930526, z: 0.0098518375}
+  m_Center: {x: 0.00040397645, y: -0.0005369179, z: 0.0042848587}
 --- !u!96 &96523891860071864
 TrailRenderer:
   serializedVersion: 2
