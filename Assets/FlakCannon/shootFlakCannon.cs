@@ -89,14 +89,6 @@ public class shootFlakCannon : MonoBehaviour
                 rb.AddForce(shootingBarrel.transform.forward * shotSpeed);
             }
         }
-        /*
-        arrow.transform.parent = null;
-        if (this.useGravity)
-        {
-            arrow.GetComponent<Rigidbody>().useGravity = true;
-        }
-        arrow.GetComponent<Rigidbody>().velocity = Vector3.Normalize(-1.0f * arrow.transform.up) * arrowSpeedMS;
-        */
     }
 
     private GameObject getShootingBarrel()

@@ -230,7 +230,7 @@ public class stationaryControll : MonoBehaviour
 			SteamVR_TrackedObject vrtrackedObj = (SteamVR_TrackedObject)controllersEnumerator.Current;
 			SteamVR_Controller.Device vrController = SteamVR_Controller.Input((int)vrtrackedObj.index);
 			
-			if (vrController.GetHairTriggerDown())
+			if (vrController.GetHairTrigger())
 			{
 				this.shotTriggered = true;
 			}
