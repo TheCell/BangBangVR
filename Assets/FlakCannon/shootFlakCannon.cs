@@ -7,13 +7,20 @@ public class shootFlakCannon : MonoBehaviour
     public stationaryControll stationaryControll;
     public GameObject shotPrefab;
     public GameObject[] shootingBarrels;
+    public AudioSource soundEmitter;
     public float shotCooldown = 0.2f;
 
+    // shooting related
     private float lastShotTime = 0.0f;
     private LinkedList<GameObject> shootingBarrelsList;
+    private LinkedList<GameObject>.Enumerator barrelsListEnumerator;
+    private List<GameObject> bulletPool = new List<GameObject>();
+    private List<GameObject>.Enumerator bulletEnumerator;
+    private float shotSpeed = 4000.0f;
+
     // sounds
     private AudioClip[] weaponShootSounds;
-    private AudioSource soundEmitter;
+
 
     // Use this for initialization
     void Start ()
@@ -26,11 +33,14 @@ public class shootFlakCannon : MonoBehaviour
         {
             shootingBarrelsList = new LinkedList<GameObject>();
         }
+        barrelsListEnumerator = shootingBarrelsList.GetEnumerator();
 
         lastShotTime = Time.realtimeSinceStartup;
 
         weaponShootSounds = Resources.LoadAll<AudioClip>("Sounds/FlakCannon");
-        soundEmitter = GetComponent<AudioSource>();
+
+        initBulletPool();
+        bulletEnumerator = bulletPool.GetEnumerator();
     }
 	
 	// Update is called once per frame
@@ -59,6 +69,26 @@ public class shootFlakCannon : MonoBehaviour
         this.lastShotTime = Time.realtimeSinceStartup;
         playShotSound();
 
+        GameObject shootingBarrel = getShootingBarrel();
+
+        if (!bulletEnumerator.MoveNext())
+        {
+            bulletEnumerator = bulletPool.GetEnumerator();
+            bulletEnumerator.MoveNext();
+        }
+        if (bulletEnumerator.Current != null)
+        {
+            GameObject currentBullet = bulletEnumerator.Current;
+            currentBullet.SetActive(false);
+            currentBullet.transform.position = shootingBarrel.transform.position;
+            currentBullet.transform.rotation = shootingBarrel.transform.rotation;
+            currentBullet.SetActive(true);
+            Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddForce(shootingBarrel.transform.forward * shotSpeed);
+            }
+        }
         /*
         arrow.transform.parent = null;
         if (this.useGravity)
@@ -69,16 +99,43 @@ public class shootFlakCannon : MonoBehaviour
         */
     }
 
+    private GameObject getShootingBarrel()
+    {
+        GameObject barrel = gameObject;
+        if (barrelsListEnumerator.MoveNext())
+        {
+            barrel = barrelsListEnumerator.Current;
+        }
+        else
+        {
+            barrelsListEnumerator = shootingBarrelsList.GetEnumerator();
+            if (barrelsListEnumerator.MoveNext())
+            {
+                barrel = barrelsListEnumerator.Current;
+            }
+        }
+
+        return barrel;
+    }
+
     private void playShotSound()
     {
-        if (weaponShootSounds.Length > 0)
+        if (weaponShootSounds.Length > 0 && soundEmitter != null)
         {
             int rndVal = (int)Mathf.Round(Random.value * (weaponShootSounds.Length - 1));
             soundEmitter.PlayOneShot(weaponShootSounds[rndVal]);
         }
         else
         {
-            print("no sounds found");
+            if (weaponShootSounds.Length > 0)
+            {
+                print("no sounds found");
+            }
+
+            if (soundEmitter != null)
+            {
+                print("no audio source");
+            }
         }
     }
 
@@ -87,6 +144,27 @@ public class shootFlakCannon : MonoBehaviour
         if (shotCommandGiven() && shotIsReady())
         {
             shootBullet();
+        }
+    }
+
+    private void initBulletPool()
+    {
+        // prefill Pool
+        for (int i = 0; i < 20; i++)
+        {
+            GameObject bullet;
+            if (shotPrefab != null)
+            {
+                 bullet = (GameObject)Instantiate(shotPrefab);
+            }
+            else
+            {
+                bullet = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                print("no bullet prefab available");
+            }
+
+            bullet.SetActive(false);
+            bulletPool.Add(bullet);
         }
     }
 }
