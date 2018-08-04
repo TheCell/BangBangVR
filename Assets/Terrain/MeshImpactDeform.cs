@@ -274,6 +274,14 @@ public class MeshImpactDeform : MonoBehaviour
     {
         //print("collision impact at " + collision.contacts[0].point);
         impact(collision);
-        Destroy(collision.gameObject);
+
+        if (!(collision.gameObject.tag == "terrainDoesNotDestroy"))
+        {
+            Destroy(collision.gameObject);
+        }
+        else
+        {
+            collision.gameObject.SetActive(false);
+        }
     }
 }
