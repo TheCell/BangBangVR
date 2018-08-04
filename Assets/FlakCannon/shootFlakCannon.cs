@@ -118,7 +118,7 @@ public class shootFlakCannon : MonoBehaviour
         TrailRenderer tr = objectWithTrail.GetComponent<TrailRenderer>();
         if (tr != null)
         {
-            print("this deletes gameobjects at the moment. TODO check after new Version");
+            print("this deletes gameobjects at the moment. TODO check again after new Version release");
             //tr.Clear();
         }
     }
@@ -146,7 +146,7 @@ public class shootFlakCannon : MonoBehaviour
 
     private void shootIfReadyAndCommandGiven()
     {
-        if (shotCommandGiven() && shotIsReady())
+        if (shotIsReady())
         {
             shootBullet();
         }
