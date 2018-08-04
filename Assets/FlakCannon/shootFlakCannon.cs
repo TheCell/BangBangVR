@@ -82,6 +82,7 @@ public class shootFlakCannon : MonoBehaviour
             currentBullet.SetActive(false);
             currentBullet.transform.position = shootingBarrel.transform.position;
             currentBullet.transform.rotation = shootingBarrel.transform.rotation;
+            resetBulletTrail();
             currentBullet.SetActive(true);
             Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
             if (rb != null)
@@ -110,6 +111,15 @@ public class shootFlakCannon : MonoBehaviour
         }
 
         return barrel;
+    }
+
+    private void resetBulletTrail()
+    {
+        TrailRenderer tr = GetComponent<TrailRenderer>();
+        if (tr != null)
+        {
+            tr.Clear();
+        }
     }
 
     private void playShotSound()
