@@ -1097,7 +1097,7 @@ MonoBehaviour:
   - {fileID: 1919090640792340}
   - {fileID: 1075397311804094}
   soundEmitter: {fileID: 82872029813353938}
-  shotCooldown: 0.2
+  shotCooldown: 0.1
 --- !u!114 &114881789838654314
 MonoBehaviour:
   m_ObjectHideFlags: 1
