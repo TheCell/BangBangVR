@@ -18,8 +18,8 @@ public class startButton : MonoBehaviour
 		
 	}
 
-    public void OnCollisionEnter(Collision collision)
-    {
+    public void OnTriggerEnter(Collider other)
+{
         print("collision");
         if (clayDispenser != null)
         {

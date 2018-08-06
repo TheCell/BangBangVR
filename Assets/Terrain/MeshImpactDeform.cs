@@ -272,16 +272,15 @@ public class MeshImpactDeform : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        //print("collision impact at " + collision.contacts[0].point);
-        impact(collision);
-
-        if (!(collision.gameObject.tag == "terrainDoesNotDestroy"))
+        if (collision.gameObject.tag.Equals("terrainDoesNotDestroy"))
         {
-            Destroy(collision.gameObject);
+            print("ignoring bullets until performance fixed");
+            collision.gameObject.SetActive(false);
         }
         else
         {
-            collision.gameObject.SetActive(false);
+            impact(collision);
+            Destroy(collision.gameObject);
         }
     }
 }
