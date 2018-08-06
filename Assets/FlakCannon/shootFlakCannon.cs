@@ -119,7 +119,7 @@ public class shootFlakCannon : MonoBehaviour
         if (tr != null)
         {
             print("this deletes gameobjects at the moment. TODO check again after new Version release");
-            //tr.Clear();
+            tr.Clear();
         }
     }
 
