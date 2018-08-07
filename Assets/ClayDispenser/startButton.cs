@@ -19,8 +19,18 @@ public class startButton : MonoBehaviour
 	}
 
     public void OnTriggerEnter(Collider other)
-{
-        print("collision");
+    {
+        startDispenser();
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        startDispenser();
+    }
+
+    public void startDispenser()
+    {
+        print("dispenser started");
         if (clayDispenser != null)
         {
             clayDispenser.startDispenser();
