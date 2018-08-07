@@ -10,8 +10,14 @@ public class MeshImpactDeform : MonoBehaviour
     private int xVerticesCount;
     private int yVerticesCount;
     private Dictionary<int, float> impactStampIndexAndStrength; // HashMap in Java
+    private bool ScriptIsActive = false;
     public float impactStrength = 1.0f;
     public int impactSize = 3;
+
+    public void Start()
+    {
+        ScriptIsActive = true;
+    }
 
     private void updateMeshData()
     {
@@ -76,33 +82,6 @@ public class MeshImpactDeform : MonoBehaviour
         Vector3 terrainOffset = gameObject.transform.position;
         // x,z is the unity plane. find closest vertex in array
         return findClosestXIndex(point - terrainOffset) + (findClosestZIndex(point - terrainOffset) * this.xVerticesCount);
-
-        /*
-        // going through the whole array
-        terrainOffset = gameObject.transform.position;
-        int vertexAmount = this.xVerticesCount * this.yVerticesCount;
-        int index = -1;
-        float currentClosestDistance = float.MaxValue;
-
-        for (int i = 0; i < vertexAmount; i++)
-        {
-            float pointDistanceToCurrentVertex = Vector3.Distance(this.terrainVertices[i] + terrainOffset, point);
-
-            //float pointDistanceToCurrentVertex = 
-            //Mathf.Abs(this.terrainVertices[i].x - point.x)
-            //+ Mathf.Abs(this.terrainVertices[i].y - point.y)
-            //+Mathf.Abs(this.terrainVertices[i].z - point.z);
-
-            if (pointDistanceToCurrentVertex < currentClosestDistance)
-            {
-                currentClosestDistance = pointDistanceToCurrentVertex;
-                index = i;
-            }
-        }
-
-
-        return index;
-        */
     }
 
     private int findClosestXIndex(Vector3 point)
@@ -272,6 +251,11 @@ public class MeshImpactDeform : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if (!ScriptIsActive)
+        {
+            return;
+        }
+
         if (collision.gameObject.tag.Equals("terrainDoesNotDestroy"))
         {
             print("ignoring bullets until performance fixed");
