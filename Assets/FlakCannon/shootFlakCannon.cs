@@ -8,7 +8,7 @@ public class shootFlakCannon : MonoBehaviour
     public GameObject shotPrefab;
     public GameObject[] shootingBarrels;
     public AudioSource soundEmitter;
-    public float shotCooldown = 0.2f;
+    public float shotCooldown = 0.05f;
 
     // shooting related
     private float lastShotTime = 0.0f;
@@ -118,7 +118,6 @@ public class shootFlakCannon : MonoBehaviour
         TrailRenderer tr = objectWithTrail.GetComponent<TrailRenderer>();
         if (tr != null)
         {
-            print("this deletes gameobjects at the moment. TODO check again after new Version release");
             tr.Clear();
         }
     }
@@ -155,7 +154,7 @@ public class shootFlakCannon : MonoBehaviour
     private void initBulletPool()
     {
         // prefill Pool
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 40; i++)
         {
             GameObject bullet;
             if (shotPrefab != null)
