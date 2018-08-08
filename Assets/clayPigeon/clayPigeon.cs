@@ -19,12 +19,20 @@ public class clayPigeon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        foreach(Transform child in transform)
+        Rigidbody parentRB = gameObject.GetComponent<Rigidbody>();
+
+        foreach (Transform child in transform)
         {
             MeshCollider mc = child.GetComponent<MeshCollider>();
             mc.isTrigger = false;
+            child.gameObject.AddComponent<Rigidbody>();
             Rigidbody rb = child.GetComponent<Rigidbody>();
             rb.useGravity = true;
+            if (parentRB != null)
+            {
+                rb.angularVelocity = parentRB.angularVelocity;
+                rb.velocity = parentRB.velocity;
+            }
             Destroy(child.gameObject, destroyTimer);
         }
 
