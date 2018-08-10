@@ -31,6 +31,9 @@ public class clayPigeon : MonoBehaviour
                 rb.angularVelocity = parentRB.angularVelocity;
                 rb.velocity = parentRB.velocity;
             }
+
+            rb.AddExplosionForce(300.0f, collision.transform.position, 5.0f);
+
             Destroy(child.gameObject, destroyTimer);
         }
 
