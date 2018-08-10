@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa6e923c71b1a44092c5aabb392b8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clayDispenser: {fileID: 0}
+  clayDispenser: {fileID: 114254082949589262}
 --- !u!114 &114254082949589262
 MonoBehaviour:
   m_ObjectHideFlags: 1
