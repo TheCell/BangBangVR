@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012877330578096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.9, y: 96.09, z: -24.09}
+  m_LocalPosition: {x: 98.35184, y: 110.7312, z: -40.822254}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4556853435807740}
@@ -147,13 +147,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750533395858088}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.4993634, y: 10.513152, z: -8.414306}
-  m_LocalScale: {x: 3.333333, y: 3.333333, z: 3.333333}
+  m_LocalRotation: {x: -0, y: -0.70710635, z: -0, w: 0.7071073}
+  m_LocalPosition: {x: 8.2, y: 10.2, z: -8.1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4662909070143288}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!4 &4860051902816620
 Transform:
   m_ObjectHideFlags: 1
@@ -217,7 +217,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a2c84e8339e3bbe4d86e28f3b3e768c0, type: 3}
+  - {fileID: 2100002, guid: a2c84e8339e3bbe4d86e28f3b3e768c0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,7 +330,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750533395858088}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: a2c84e8339e3bbe4d86e28f3b3e768c0, type: 3}
 --- !u!33 &33805148946252786
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -347,8 +348,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.0364618, y: 2.5994117, z: 6.899227}
+  m_Center: {x: 0.06742514, y: -0.03344703, z: 2.9496124}
 --- !u!114 &114247094064851872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -360,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa6e923c71b1a44092c5aabb392b8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clayDispenser: {fileID: 114254082949589262}
+  clayDispenser: {fileID: 0}
 --- !u!114 &114254082949589262
 MonoBehaviour:
   m_ObjectHideFlags: 1
