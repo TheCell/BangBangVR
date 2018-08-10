@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class clayPigeon : MonoBehaviour
 {
+    public AudioSource soundEmitter;
+    public AudioClip[] pigeonDestroySounds;
+
     private float destroyTimer = 2.2f;
-	// Use this for initialization
-	void Start ()
+
+    public void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+        pigeonDestroySounds = Resources.LoadAll<AudioClip>("Sounds/clayPigeon");
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         Rigidbody parentRB = gameObject.GetComponent<Rigidbody>();
+        playDestroySound();
 
         foreach (Transform child in transform)
         {
@@ -38,5 +36,26 @@ public class clayPigeon : MonoBehaviour
 
         transform.DetachChildren();
         Destroy(gameObject);
+    }
+
+    private void playDestroySound()
+    {
+        if (pigeonDestroySounds.Length > 0 && soundEmitter != null)
+        {
+            int rndVal = (int)Mathf.Round(Random.value * (pigeonDestroySounds.Length - 1));
+            soundEmitter.PlayOneShot(pigeonDestroySounds[rndVal]);
+        }
+        else
+        {
+            if (pigeonDestroySounds.Length > 0)
+            {
+                print("no sounds found");
+            }
+
+            if (soundEmitter != null)
+            {
+                print("no audio source");
+            }
+        }
     }
 }
