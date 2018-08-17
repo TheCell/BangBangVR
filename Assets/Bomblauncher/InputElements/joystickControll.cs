@@ -17,11 +17,12 @@ public class joystickControll : MonoBehaviour
         if (joystick != null)
         {
             originPoint = joystick.transform.localPosition;
+            print("originPoint " + originPoint);
         }
 
         if (joystickLimiterDisk != null)
         {
-            float diameter = joystickLimiterDisk.transform.localPosition.x;
+            float diameter = Mathf.Abs(joystickLimiterDisk.transform.localScale.x);
             maximumDisplacement = diameter / 2;
         }
     }
@@ -31,10 +32,24 @@ public class joystickControll : MonoBehaviour
     {
         if (joystick != null)
         {
-            //Vector3.Distance(transform.position, joystick.transform.position);
-            //joystickXYPosition = transform.position - joystick.transform.position;
+            joystickXYPosition = joystick.transform.localPosition;
+            clampJoystickToLimiterDisk();
         }
+    }
 
-        print("joystickXYPosition " + joystickXYPosition);
+    private void clampJoystickToLimiterDisk()
+    {
+        joystickXYPosition = joystickXYPosition - originPoint;
+        joystickXYPosition.y = 0.0f;
+        joystick.transform.localPosition = Vector3.ClampMagnitude(joystickXYPosition, maximumDisplacement) + originPoint;
+    }
+
+    public Vector2 getNormedXYDisplacement()
+    {
+        Vector2 displacement = new Vector2(joystickXYPosition.x, joystickXYPosition.z);
+        float maxNormedValue = 1 / maximumDisplacement;
+        displacement.x = displacement.x * maxNormedValue;
+        displacement.y = displacement.y * maxNormedValue;
+        return displacement;
     }
 }

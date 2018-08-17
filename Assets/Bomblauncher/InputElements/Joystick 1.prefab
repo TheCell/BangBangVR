@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926924168432920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 129.09833, y: 107.32296, z: -50.909878}
+  m_LocalPosition: {x: 127.94, y: 112.88, z: -51.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4094948149768396}
@@ -198,5 +198,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361845f3a180564468386bcbdbbac875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  joystickLimiterDisk: {fileID: 0}
+  joystick: {fileID: 1613241289412786}
+  joystickLimiterDisk: {fileID: 1150385112740120}
