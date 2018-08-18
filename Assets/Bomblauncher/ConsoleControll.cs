@@ -8,10 +8,12 @@ public class ConsoleControll : MonoBehaviour
     public handleControll handleControlls;
     public GameObject bombLauncher;
     public GameObject bomb;
+    public GameObject launchPoint;
     public float minimumTimeBetweenBombs = 5.0f;
 
     private float timeSinceLastBomb;
     private bool wasTurnedOffInbetween = true;
+    private float launchForce = 10000.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -41,8 +43,9 @@ public class ConsoleControll : MonoBehaviour
         Rigidbody bombRB = bomb.GetComponent<Rigidbody>();
         if (bombRB != null)
         {
-            Vector3 forceAngle = bombLauncher.transform.rotation.eulerAngles;
-            //bombRB.AddForce(forceAngle * 30.0f);
+            Vector3 forceAngle = bombLauncher.transform.up;
+            forceAngle = forceAngle * launchForce;
+            print(forceAngle);
             bombRB.AddForce(forceAngle);
         }
     }
@@ -69,7 +72,10 @@ public class ConsoleControll : MonoBehaviour
     private GameObject spawnBomb()
     {
         GameObject bomb = Instantiate(this.bomb);
-        bomb.transform.position = bombLauncher.transform.position;
+        if (launchPoint != null)
+        {
+            bomb.transform.position = launchPoint.transform.position;
+        }
 
         return bomb;
     }
