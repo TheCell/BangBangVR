@@ -7,6 +7,7 @@ public class ConsoleControll : MonoBehaviour
     public joystickControll joystickControlls;
     public handleControll handleControlls;
     public GameObject bombLauncher;
+    public GameObject bomb;
     public float minimumTimeBetweenBombs = 5.0f;
 
     private float timeSinceLastBomb;
@@ -35,6 +36,15 @@ public class ConsoleControll : MonoBehaviour
     {
         print("peng");
         timeSinceLastBomb = Time.realtimeSinceStartup;
+
+        GameObject bomb = spawnBomb();
+        Rigidbody bombRB = bomb.GetComponent<Rigidbody>();
+        if (bombRB != null)
+        {
+            Vector3 forceAngle = bombLauncher.transform.rotation.eulerAngles;
+            //bombRB.AddForce(forceAngle * 30.0f);
+            bombRB.AddForce(forceAngle);
+        }
     }
 
     private void launchBombIfCriteriaMet()
@@ -54,5 +64,13 @@ public class ConsoleControll : MonoBehaviour
     private bool enoughTimePastSinceLastLaunch()
     {
         return (this.timeSinceLastBomb + minimumTimeBetweenBombs) < Time.realtimeSinceStartup;
+    }
+
+    private GameObject spawnBomb()
+    {
+        GameObject bomb = Instantiate(this.bomb);
+        bomb.transform.position = bombLauncher.transform.position;
+
+        return bomb;
     }
 }
