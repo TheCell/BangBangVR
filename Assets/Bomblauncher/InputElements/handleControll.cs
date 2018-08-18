@@ -17,7 +17,6 @@ public class handleControll : MonoBehaviour
         if (handle != null)
         {
             originPoint = handle.transform.localPosition;
-            print("originPoint " + originPoint);
         }
 
         if (handleLimiterDisk != null)
