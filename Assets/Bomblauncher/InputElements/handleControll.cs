@@ -43,17 +43,37 @@ public class handleControll : MonoBehaviour
         handle.transform.localPosition = Vector3.ClampMagnitude(handleXYPosition, maximumDisplacement) + originPoint;
     }
 
-    public float getNormedXDisplacement()
+    public float getNormedXDisplacement(bool midIsZero = false)
     {
         float displacement = handleXYPosition.z;
-        float maxNormedValue = 1 / maximumDisplacement;
-        displacement = displacement * maxNormedValue;
+
+        if (midIsZero)
+        {
+            float maxNormedValue = 1 / maximumDisplacement;
+            displacement = displacement * maxNormedValue;
+        }
+        else
+        {
+            float maxNormedValue = 1 / (maximumDisplacement * 2);
+            displacement = displacement * maxNormedValue + 0.5f;
+
+            if (displacement < 0.0f)
+            {
+                displacement = 0;
+            }
+
+            if (displacement > 1.0f)
+            {
+                displacement = 1.0f;
+            }
+        }
+        
         return displacement;
     }
 
     public bool isOn()
     {
-        float displacementValue = getNormedXDisplacement();
+        float displacementValue = getNormedXDisplacement(true);
         return displacementValue < 0;
     }
 }
