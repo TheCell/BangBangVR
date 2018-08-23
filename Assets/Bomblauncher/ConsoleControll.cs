@@ -6,6 +6,7 @@ public class ConsoleControll : MonoBehaviour
 {
     public joystickControll joystickControlls;
     public handleControll handleControlls;
+    public LaunchButtonControlls launchButtonControlls;
     public GameObject bombLauncher;
     public GameObject bomb;
     public GameObject launchPoint;
@@ -24,7 +25,7 @@ public class ConsoleControll : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if (handleControlls.isOn())
+		if (launchButtonControlls.isPressed())
         {
             launchBombIfCriteriaMet();
         }
