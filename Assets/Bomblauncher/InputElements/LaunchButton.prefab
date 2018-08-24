@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4715674597166486}
   - component: {fileID: 33832710739788682}
   - component: {fileID: 23011785879474432}
+  - component: {fileID: 65124667454554074}
   m_Layer: 0
   m_Name: LaunchButton
   m_TagString: Untagged
@@ -51,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093522368135586}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 128.177, y: 109.38, z: -49.936}
+  m_LocalPosition: {x: 135.98154, y: 108.78256, z: -49.873116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4715674597166486}
@@ -113,6 +114,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702985579122834}
   m_Mesh: {fileID: 4300000, guid: 49a3e0812b60bb04fb02fab62b7c7c7b, type: 3}
+--- !u!65 &65124667454554074
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702985579122834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.2, z: 2}
+  m_Center: {x: 0, y: 0.099999994, z: 0}
 --- !u!114 &114860641297722906
 MonoBehaviour:
   m_ObjectHideFlags: 1
