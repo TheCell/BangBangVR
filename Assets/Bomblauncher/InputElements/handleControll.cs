@@ -45,7 +45,7 @@ public class handleControll : MonoBehaviour
 
     public float getNormedXDisplacement(bool midIsZero = false)
     {
-        float displacement = handleXYPosition.z;
+        float displacement = handleXYPosition.z * -1.0f;
 
         if (midIsZero)
         {
@@ -67,7 +67,7 @@ public class handleControll : MonoBehaviour
                 displacement = 1.0f;
             }
         }
-        
+
         return displacement;
     }
 
