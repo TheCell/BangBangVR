@@ -10,6 +10,7 @@ public class joystickControll : MonoBehaviour
     private Vector3 originPoint;
     private Vector3 joystickXYPosition;
     private float maximumDisplacement;
+    private float blindSpot = 0.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -47,9 +48,36 @@ public class joystickControll : MonoBehaviour
     public Vector2 getNormedXYDisplacement()
     {
         Vector2 displacement = new Vector2(joystickXYPosition.x, joystickXYPosition.z);
+        if (displacement.x > maximumDisplacement)
+        {
+            displacement.x = maximumDisplacement;
+        }
+        if (displacement.y > maximumDisplacement)
+        {
+            displacement.y = maximumDisplacement;
+        }
         float maxNormedValue = 1 / maximumDisplacement;
         displacement.x = displacement.x * maxNormedValue;
         displacement.y = displacement.y * maxNormedValue;
+        if (Mathf.Abs(displacement.x) < blindSpot)
+        {
+            displacement.x = 0.0f;
+        }
+        if (Mathf.Abs(displacement.y) < blindSpot)
+        {
+            displacement.y = 0.0f;
+        }
+
+        if (Mathf.Abs(displacement.x) > 1.0f)
+        {
+            displacement.x = 1.0f;
+        }
+        if (Mathf.Abs(displacement.y) > 1.0f)
+        {
+            displacement.y = 1.0f;
+        }
+
+        displacement = displacement * -1.0f;
         return displacement;
     }
 }
