@@ -30,7 +30,6 @@ public class BombLauncher : MonoBehaviour
         eulerAngles.y = stepSizeDegree * normedAngles.y;
         eulerAngles.z = stepSizeDegree * normedAngles.z;
 
-        print(eulerAngles);
         setAnglesTo(eulerAngles);
     }
 }

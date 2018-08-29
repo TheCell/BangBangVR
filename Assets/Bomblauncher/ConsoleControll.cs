@@ -39,7 +39,6 @@ public class ConsoleControll : MonoBehaviour
 
     private void launchBomb()
     {
-        print("peng");
         timeSinceLastBomb = Time.realtimeSinceStartup;
 
         GameObject bomb = spawnBomb();
@@ -57,7 +56,6 @@ public class ConsoleControll : MonoBehaviour
                 print("handle not set");
             }
             forceAngle = forceAngle * launchForce;
-            print(forceAngle);
             bombRB.AddForce(forceAngle);
         }
     }

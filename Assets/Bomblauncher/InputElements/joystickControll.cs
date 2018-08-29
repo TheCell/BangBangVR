@@ -18,7 +18,6 @@ public class joystickControll : MonoBehaviour
         if (joystick != null)
         {
             originPoint = joystick.transform.localPosition;
-            print("originPoint " + originPoint);
         }
 
         if (joystickLimiterDisk != null)
