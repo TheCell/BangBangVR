@@ -15,7 +15,8 @@ public class ConsoleControll : MonoBehaviour
 
     private float timeSinceLastBomb;
     private bool wasTurnedOffInbetween = true;
-    private float launchForce = 10000.0f;
+    private float maximumLaunchForce = 10000.0f;
+    private float minimumLaunchForce = 2500.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -46,6 +47,15 @@ public class ConsoleControll : MonoBehaviour
         if (bombRB != null)
         {
             Vector3 forceAngle = bombLauncher.transform.up;
+            float launchForce = maximumLaunchForce;
+            if (handleControlls != null)
+            {
+                launchForce = Mathf.Lerp(minimumLaunchForce, maximumLaunchForce, handleControlls.getNormedXDisplacement());
+            }
+            else
+            {
+                print("handle not set");
+            }
             forceAngle = forceAngle * launchForce;
             print(forceAngle);
             bombRB.AddForce(forceAngle);
@@ -88,8 +98,6 @@ public class ConsoleControll : MonoBehaviour
         {
             Vector2 JoystickXY = joystickControlls.getNormedXYDisplacement();
             Vector3 step = new Vector3(JoystickXY.x, 0.0f, JoystickXY.y);
-            //print(step);
-            //bombLauncherScript.turnByThisStep(step);
             bombLauncherScript.setAnglesFromNormed(step);
         }
         else
