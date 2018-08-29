@@ -34,16 +34,15 @@ public class BombLauncher : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //turnByThisStep(new Vector3(0.5f, 0.5f, 0.5f));
         turnByThisStep(new Vector3(0.5f, 0.5f, 0.5f));
+        //turnByThisStep(new Vector3(0.0f, 0.0f, 0.5f));
     }
 
     public void turnByThisStep(Vector3 stepsize)
     {
-        transform.Rotate(stepsize);
+        //transform.Rotate(stepsize);
         //transform.position = originPoint;
 
-        /*
         Vector3 eulerAngles = transform.eulerAngles;
         eulerAngles = eulerAngles + stepsize;
 
@@ -52,7 +51,6 @@ public class BombLauncher : MonoBehaviour
         eulerAngles.z = Mathf.Clamp(eulerAngles.z, -45.0f, 45.0f);
 
         transform.eulerAngles = eulerAngles;
-        */
 
         //transform.position = originPoint;
         /*
@@ -79,19 +77,4 @@ public class BombLauncher : MonoBehaviour
         transform.localEulerAngles = new Vector3(eulerAngles.x, eulerAngles.y, eulerAngles.z);
         */
     }
-
-    /*
-    private float ClampAngle(float angle, float min, float max)
-    {
-        if (angle < -360F)
-        {
-            angle += 360F;
-        }
-        if (angle > 360F)
-        {
-            angle -= 360F;
-        }
-        return Mathf.Clamp(angle, min, max);
-    }
-    */
 }
