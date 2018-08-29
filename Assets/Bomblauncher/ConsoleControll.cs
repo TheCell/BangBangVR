@@ -12,11 +12,11 @@ public class ConsoleControll : MonoBehaviour
     public GameObject bomb;
     public GameObject launchPoint;
     public float minimumTimeBetweenBombs = 5.0f;
+    public float maximumLaunchForce = 12000.0f;
+    public float minimumLaunchForce = 5000.0f;
 
     private float timeSinceLastBomb;
     private bool wasTurnedOffInbetween = true;
-    private float maximumLaunchForce = 10000.0f;
-    private float minimumLaunchForce = 3000.0f;
 
 	// Use this for initialization
 	void Start ()
