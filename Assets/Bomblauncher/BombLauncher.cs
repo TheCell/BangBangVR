@@ -34,7 +34,7 @@ public class BombLauncher : MonoBehaviour
 
     private void FixedUpdate()
     {
-        turnByThisStep(new Vector3(0.5f, 0.5f, 0.5f));
+        //turnByThisStep(new Vector3(0.5f, 0.5f, 0.5f));
         //turnByThisStep(new Vector3(0.0f, 0.0f, 0.5f));
     }
 
@@ -47,7 +47,7 @@ public class BombLauncher : MonoBehaviour
         eulerAngles = eulerAngles + stepsize;
 
         eulerAngles.x = Mathf.Clamp(eulerAngles.x, -45.0f, 45.0f);
-        eulerAngles.y = Mathf.Clamp(eulerAngles.y, -45.0f, 45.0f);
+        //eulerAngles.y = Mathf.Clamp(eulerAngles.y, -45.0f, 45.0f);
         eulerAngles.z = Mathf.Clamp(eulerAngles.z, -45.0f, 45.0f);
 
         transform.eulerAngles = eulerAngles;
@@ -76,5 +76,23 @@ public class BombLauncher : MonoBehaviour
         eulerAngles.z = ClampAngle(eulerAngles.z, -45.0f, 45.0f);
         transform.localEulerAngles = new Vector3(eulerAngles.x, eulerAngles.y, eulerAngles.z);
         */
+    }
+
+    public void setAnglesTo(Vector3 eulerAngles)
+    {
+        transform.eulerAngles = eulerAngles;
+    }
+
+    public void setAnglesFromNormed(Vector3 normedAngles)
+    {
+        //float stepSizeDegree = 1.0f / 360.0f;
+        float stepSizeDegree = 45.0f / 1.0f;
+        Vector3 eulerAngles = Vector3.zero;
+        eulerAngles.x = stepSizeDegree * normedAngles.x;
+        eulerAngles.y = stepSizeDegree * normedAngles.y;
+        eulerAngles.z = stepSizeDegree * normedAngles.z;
+
+        print(eulerAngles);
+        setAnglesTo(eulerAngles);
     }
 }
