@@ -16,7 +16,7 @@ public class ConsoleControll : MonoBehaviour
     private float timeSinceLastBomb;
     private bool wasTurnedOffInbetween = true;
     private float maximumLaunchForce = 10000.0f;
-    private float minimumLaunchForce = 2500.0f;
+    private float minimumLaunchForce = 3000.0f;
 
 	// Use this for initialization
 	void Start ()
