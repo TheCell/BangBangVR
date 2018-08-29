@@ -7,6 +7,7 @@ public class ConsoleControll : MonoBehaviour
     public joystickControll joystickControlls;
     public handleControll handleControlls;
     public LaunchButtonControlls launchButtonControlls;
+    public BombLauncher bombLauncherScript;
     public GameObject bombLauncher;
     public GameObject bomb;
     public GameObject launchPoint;
@@ -79,5 +80,21 @@ public class ConsoleControll : MonoBehaviour
         }
 
         return bomb;
+    }
+
+    private void FixedUpdate()
+    {
+        if (joystickControlls != null && bombLauncherScript != null)
+        {
+            Vector2 JoystickXY = joystickControlls.getNormedXYDisplacement();
+            Vector3 step = new Vector3(JoystickXY.x, 0.0f, JoystickXY.y);
+            //print(step);
+            //bombLauncherScript.turnByThisStep(step);
+            bombLauncherScript.setAnglesFromNormed(step);
+        }
+        else
+        {
+            print("joystickControlls or bombLauncher is not set");
+        }
     }
 }
