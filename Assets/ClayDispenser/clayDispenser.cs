@@ -68,7 +68,8 @@ public class clayDispenser : MonoBehaviour
     {
         if(this.shootCounter > 0 && cooldownExpired())
         {
-            shootCounter--;
+            // I just want to release this no efort. Endless Pigeon shooting
+            //shootCounter--;
             dispense();
         }
     }
