@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+public class ObjectBuilderEditor : MonoBehaviour
+{
+
+}
+
+/*
 [CustomEditor(typeof(ObjectBuilderScript))]
 public class ObjectBuilderEditor : Editor
 {
@@ -17,3 +23,5 @@ public class ObjectBuilderEditor : Editor
         }
     }
 }
+*/
+  
