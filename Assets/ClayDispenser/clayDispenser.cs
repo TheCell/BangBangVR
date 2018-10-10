@@ -11,7 +11,7 @@ public class clayDispenser : MonoBehaviour
 
     private int shootCounter;
     private float minForce = 1300.0f;
-    private float maxForce = 2000.0f;
+    private float maxForce = 1700.0f;
     private float lastDispenseTime;
 
     // Use this for initialization
@@ -68,7 +68,6 @@ public class clayDispenser : MonoBehaviour
     {
         if(this.shootCounter > 0 && cooldownExpired())
         {
-            // I just want to release this no efort. Endless Pigeon shooting
             shootCounter--;
             dispense();
         }
