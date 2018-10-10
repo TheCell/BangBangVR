@@ -45,5 +45,8 @@ public class startButton : MonoBehaviour
         {
             print("no script reference");
         }
-    }
+
+		// destroy start object after start
+		Destroy(gameObject);
+	}
 }
