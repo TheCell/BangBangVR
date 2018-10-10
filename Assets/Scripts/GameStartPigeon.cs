@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStartPigeon : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class GameStartPigeon : MonoBehaviour
 
 			transform.DetachChildren();
 			Destroy(gameObject);
+			SceneManager.LoadScene("gameScene", LoadSceneMode.Single);
 		}
 	}
 
