@@ -5,6 +5,7 @@ using UnityEngine;
 public class startButton : MonoBehaviour
 {
     public clayDispenser clayDispenser;
+	public clayDispenser clayDispenser2;
 
 	// Use this for initialization
 	void Start ()
@@ -34,6 +35,11 @@ public class startButton : MonoBehaviour
         if (clayDispenser != null)
         {
             clayDispenser.startDispenser();
+
+			if (clayDispenser2 != null)
+			{
+				clayDispenser2.startDispenser();
+			}
         }
         else
         {

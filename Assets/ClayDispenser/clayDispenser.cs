@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class clayDispenser : MonoBehaviour
 {
-    public int shootCycleCount = 5;
+    public int shootCycleCount = 10;
     public float secondsBetweenShots = 2.0f;
     public GameObject shootFrom;
     public GameObject shootObject;
