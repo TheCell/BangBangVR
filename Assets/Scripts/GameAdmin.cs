@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class GameAdmin : MonoBehaviour
 {
-	private Highscore highscore;
-
 	// Use this for initialization
 	void Start ()
 	{
-		highscore = new Highscore();
+		Highscore.resetHighScore();
+		DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		
+	}
+
+	public void startRound()
+	{
+		Highscore.resetHighScore();
+		//SceneManager.LoadScene("gameScene");
 	}
 }
