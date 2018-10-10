@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Highscore
+public static class Highscore
 {
-	private int highScore = 0;
+	private static int highScore = 0;
 
-	public void resetHighScore()
+	public static void resetHighScore()
 	{
 		highScore = 0;
 	}
 
-	public int getHighScore()
+	public static int getHighScore()
 	{
 		return highScore;
 	}
 
-	public void addToHighscore(int scoreToAdd)
+	public static void addToHighscore(int scoreToAdd)
 	{
-		this.highScore += scoreToAdd;
+		highScore += scoreToAdd;
 	}
 }
