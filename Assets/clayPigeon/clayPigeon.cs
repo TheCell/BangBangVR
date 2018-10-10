@@ -16,29 +16,32 @@ public class clayPigeon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Rigidbody parentRB = gameObject.GetComponent<Rigidbody>();
-        playDestroySound();
+		if (collision.gameObject.tag == "terrainDoesNotDestroy")
+		{
+			Rigidbody parentRB = gameObject.GetComponent<Rigidbody>();
+			playDestroySound();
 
-        foreach (Transform child in transform)
-        {
-            MeshCollider mc = child.GetComponent<MeshCollider>();
-            mc.isTrigger = false;
-            child.gameObject.AddComponent<Rigidbody>();
-            Rigidbody rb = child.GetComponent<Rigidbody>();
-            rb.useGravity = true;
-            if (parentRB != null)
-            {
-                rb.angularVelocity = parentRB.angularVelocity;
-                rb.velocity = parentRB.velocity;
-            }
+			foreach (Transform child in transform)
+			{
+				MeshCollider mc = child.GetComponent<MeshCollider>();
+				mc.isTrigger = false;
+				child.gameObject.AddComponent<Rigidbody>();
+				Rigidbody rb = child.GetComponent<Rigidbody>();
+				rb.useGravity = true;
+				if (parentRB != null)
+				{
+					rb.angularVelocity = parentRB.angularVelocity;
+					rb.velocity = parentRB.velocity;
+				}
 
-            rb.AddExplosionForce(300.0f, collision.transform.position, 5.0f);
+				rb.AddExplosionForce(300.0f, collision.transform.position, 5.0f);
 
-            Destroy(child.gameObject, destroyTimer);
-        }
+				Destroy(child.gameObject, destroyTimer);
+			}
 
-        transform.DetachChildren();
-        Destroy(gameObject);
+			transform.DetachChildren();
+			Destroy(gameObject);
+		}
     }
 
     private void playDestroySound()
