@@ -13,6 +13,7 @@ public class clayDispenser : MonoBehaviour
     private float minForce = 1300.0f;
     private float maxForce = 1700.0f;
     private float lastDispenseTime;
+	private bool started = false;
 
     // Use this for initialization
     void Start ()
@@ -29,7 +30,23 @@ public class clayDispenser : MonoBehaviour
     public void startDispenser()
     {
         shootCounter = shootCycleCount;
+		started = true;
     }
+
+	public bool isEmpty()
+	{
+		if (!started)
+		{
+			return false;
+		}
+
+		if (shootCounter <= 0)
+		{
+			return true;
+		}
+
+		return false;
+	}
 
     private void dispense()
     {

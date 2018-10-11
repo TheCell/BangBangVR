@@ -29,7 +29,7 @@ public class flakCanonShot : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        print("collision");
+        //print("collision");
         //startDisplayingSmoke();
         //gameObject.SetActive(false);
     }
