@@ -8,7 +8,6 @@ public class GameAdmin : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Highscore.resetHighScore();
 		DontDestroyOnLoad(gameObject);
 	}
 	
@@ -16,12 +15,7 @@ public class GameAdmin : MonoBehaviour
 	void Update ()
 	{
 		allDispenserScripts();
-	}
-
-	public void startRound()
-	{
-		Highscore.resetHighScore();
-		//SceneManager.LoadScene("gameScene");
+		updateHighscoreBoard();
 	}
 
 	private void allDispenserScripts()
@@ -44,6 +38,17 @@ public class GameAdmin : MonoBehaviour
 		if (gameEnd)
 		{
 			SceneManager.LoadScene("IntroScene", LoadSceneMode.Single);
+		}
+	}
+	
+	private void updateHighscoreBoard()
+	{
+		GameObject highScoreText = (GameObject) GameObject.Find("HighscoreScore");
+		if (highScoreText != null)
+		{
+			TextMesh highScoreTextMesh = highScoreText.GetComponent<TextMesh>();
+			//print(Highscore.getHighScore().ToString());
+			highScoreTextMesh.text = Highscore.getHighScore().ToString();
 		}
 	}
 }

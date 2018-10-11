@@ -32,7 +32,7 @@ public class clayPigeon : MonoBehaviour
 				points = 5;
 			}
 			Highscore.addToHighscore(points);
-			print("adding " + points);
+			print("adding " + points + " score is now: " + Highscore.getHighScore());
 			Rigidbody parentRB = gameObject.GetComponent<Rigidbody>();
 			playDestroySound();
 

@@ -42,6 +42,7 @@ public class GameStartPigeon : MonoBehaviour
 
 			transform.DetachChildren();
 			Destroy(gameObject);
+			Highscore.resetHighScore();
 			SceneManager.LoadScene("gameScene", LoadSceneMode.Single);
 		}
 	}
