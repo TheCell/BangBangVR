@@ -6,6 +6,8 @@ public class clayPigeon : MonoBehaviour
 {
     public AudioSource soundEmitter;
     public AudioClip[] pigeonDestroySounds;
+	public float timespanForMaxPoints = 2.0f;
+	private float timestampActive;
 
     private float destroyTimer = 2.2f;
 
@@ -14,10 +16,23 @@ public class clayPigeon : MonoBehaviour
         pigeonDestroySounds = Resources.LoadAll<AudioClip>("Sounds/clayPigeon");
     }
 
+	public void OnEnable()
+	{
+		this.timestampActive = Time.deltaTime;
+	}
+
     private void OnCollisionEnter(Collision collision)
     {
 		if (collision.gameObject.tag == "terrainDoesNotDestroy")
 		{
+			int points = 3;
+
+			if (this.timestampActive + timespanForMaxPoints > Time.deltaTime)
+			{
+				points = 5;
+			}
+			Highscore.addToHighscore(points);
+			print("adding " + points);
 			Rigidbody parentRB = gameObject.GetComponent<Rigidbody>();
 			playDestroySound();
 
