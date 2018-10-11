@@ -18,7 +18,7 @@ public class clayPigeon : MonoBehaviour
 
 	public void OnEnable()
 	{
-		this.timestampActive = Time.deltaTime;
+		this.timestampActive = Time.realtimeSinceStartup;
 	}
 
     private void OnCollisionEnter(Collision collision)
@@ -27,7 +27,7 @@ public class clayPigeon : MonoBehaviour
 		{
 			int points = 3;
 
-			if (this.timestampActive + timespanForMaxPoints > Time.deltaTime)
+			if (this.timestampActive + timespanForMaxPoints > Time.realtimeSinceStartup)
 			{
 				points = 5;
 			}
